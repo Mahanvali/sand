@@ -12,7 +12,7 @@ void HandleInput();
 
 int main(){
     InitWindow(screenWidth, screenHeight, "sand simulation");
-    SetTargetFPS(60);
+    SetTargetFPS(120);
     while(!WindowShouldClose()){
         HandleInput();
         grid.UpdateSand();
