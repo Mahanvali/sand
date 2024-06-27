@@ -4,25 +4,18 @@
 void Grid::Draw(){
     for(int row = 0; row < rows; row++){
         for(int column = 0; column < columns; column++){
-            int r = 0 + row + 20;
-            int g = 10;
-            int b = 100;
-            if(r > 255 || b > 255){
-                r = 0;
-                g = 10;
-                b = 100;
-            }
+            int r = row + 20;
+            r = (r > 255) ? 255 : r; // Ensure r does not exceed 255
+            int g = 30;
+            int b = 90;
             unsigned char red = static_cast<unsigned char>(r);
             unsigned char green = static_cast<unsigned char>(g);
             unsigned char blue = static_cast<unsigned char>(b);
 
-            // If cell is alive set the color to the calculated gradient color, else set the color to a light gray.};
-            //If cell is alive set the color to green, else set the color to a light gray.
-            Color colorsOfCells = cells[row][column] ? Color{red, 10, blue, 255} : Color{55, 55, 55, 255};
-            //Draw the squares/cells, make the cells a bit smaller than cellSize so it doesn't cover up the entire screen giving us "lines" 
-            //because we calulated the cellsize in away that it covers the entire screen, so instead of just drawing lines we use this method instead.
-            //made it smaller by subtracting by 1
-            DrawRectangle(column * cellsize, row * cellsize, cellsize - 1, cellsize - 1, colorsOfCells);
+            //Set the color of the alive cell
+            Color colorsOfCells = cells[row][column] ? Color{red, green, blue, 255} : Color{55, 55, 55, 255};
+            //Draw the squares/cells
+            DrawRectangle(column * cellsize, row * cellsize, cellsize, cellsize, colorsOfCells);
         }
     }
 }
