@@ -4,7 +4,7 @@
 void Grid::Draw(){
     for(int row = 0; row < rows; row++){
         for(int column = 0; column < columns; column++){
-            int r = row + 20;
+            int r = row + 60;
             r = (r > 255) ? 255 : r; // Ensure r does not exceed 255
             int g = 30;
             int b = 90;

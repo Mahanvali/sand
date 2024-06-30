@@ -5,6 +5,8 @@ const int screenWidth = 800;
 const int screenHeight = 800;
 const int sizeCell = 3;
 
+int radius = 6;
+
 Grid grid(screenWidth, screenHeight, sizeCell);
 Color backgroundColor = {30, 30, 30, 255};
 
@@ -38,6 +40,21 @@ void HandleInput()
                 //Equation for circle in 2D grid
                if (i * i + j * j <= radius * radius && grid.isWithinBounds(row + i, column + j)) {
                     grid.SetValueOfCells(row + i, column + j, 1);
+               }
+            }
+        }
+    }
+
+    if(IsKeyDown(KEY_SPACE)){
+        Vector2 mousePosition = GetMousePosition();
+        int row = mousePosition.y / sizeCell;
+        int column = mousePosition.x / sizeCell;
+
+        for (int i = -radius; i <= radius; i++) {
+            for (int j = -radius; j <= radius; j++) {
+                //Equation for circle in 2D grid
+               if (i * i + j * j <= radius * radius && grid.isWithinBounds(row + i, column + j)) {
+                    grid.SetValueOfCells(row + i, column + j, 0);
                }
             }
         }
